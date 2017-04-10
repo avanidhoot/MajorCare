@@ -1,0 +1,67 @@
+( function(){
+  // Initialize Firebase
+
+  var config = {
+    apiKey: "AIzaSyBNFYsVk-JwYK8gJlHCFO5ZyYpBxqRXNJo",
+    authDomain: "care-5571b.firebaseapp.com",
+    databaseURL: "https://care-5571b.firebaseio.com",
+    projectId: "care-5571b",
+    storageBucket: "care-5571b.appspot.com",
+    messagingSenderId: "81353950576"
+  };
+  firebase.initializeApp(config);
+    
+  const logout_btn = document.getElementById('logout_btn');
+  const auth = firebase.auth()
+     
+  logout_btn.addEventListener('click',e=>{
+    const promise = auth.signOut();
+    promise.catch(e=>alert(e.message));
+  });
+
+  auth.onAuthStateChanged(firebaseUser=>{ 
+        if(firebaseUser==null) //Loggout state
+        {
+           window.location.href="E:/project/major-project/MajorCare/index.html";   
+        }
+      else{
+	var i =0;
+	   var row = new Array();
+           var database = firebase.database();
+           userref = database.ref('Donations');
+           currentuser = userref.child(auth.currentUser.uid);
+           currentuser.on('value',function(snapshot){
+               snapshot.forEach(function(childSnapshot) {
+    		var amount = childSnapshot.val().donationAmount;
+    		var status = childSnapshot.val().doantionStatus;
+		var orgName = childSnapshot.val().organisationName;
+		row[i] = new Array(amount,status,orgName);
+		i=i+1;  		
+		});
+           });
+	   tabBody=document.getElementsByTagName("tbody").item(0);
+           row=document.createElement("tr");
+           cell1 = document.createElement("td");
+           cell2 = document.createElement("td");
+           textnode1=document.createTextNode(content);
+           textnode2=document.createTextNode(morecontent);
+           cell1.appendChild(textnode1);
+           cell2.appendChild(textnode2);
+           row.appendChild(cell1);
+           row.appendChild(cell2);
+           tabBody.appendChild(row);
+      
+	   for(i=0;i<donation.length;i++){
+		var tr= document.createElement("tr");
+		for (j = 0; j < donation[i].length; j++) {
+       		 var td = document.createElement('td')
+        	 td.appendChild(document.createTextNode(donation[i][j]));
+        	 tr.appendChild(td)
+    		}
+    		tableBody.appendChild(tr);				
+	   }
+          
+        }
+  });
+
+}())

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>CARE</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- stylesheets css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/nivo-lightbox.css">
+    <link rel="stylesheet" href="css/nivo_themes/default/default.css">
+
+    <link rel="stylesheet" href="css/hover-min.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/jquery.galereya.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' rel='stylesheet' type='text/css'>
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase-database.js"></script>
+
+</head>
+    <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+        <div class="container">
+
+        
+        <form id="signup-form" method="post" action="#">
+            <div class="col-sm-6">
+                                <div>
+                                    
+                                        <h3><label>For User</label></h3>
+                                        <br>
+                                        <label>First Name:</label>
+                                        <input type="text" class="form-control" id="fname" placeholder="Your First Name" required>
+                                        <br>
+                                        <label>Last Name:</label>
+                                        <input type="text" class="form-control" id="lname" placeholder="Your Last Name" required>
+                                        <br>
+                                        <label>Email Id:</label>
+                                        <input name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" id="email" class="form-control" placeholder="Your Email" required>
+                                        <br>
+                                        <label>Password:</label>
+                                        <input type="password" class="form-control" id="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" required>
+                                        <br>
+                                        <label>Confirm Password:</label>
+                                        <input type="password" class="form-control" id="conf_pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password must match" required>
+                                    </div><br>
+                                     <div class="footer" align="right">
+                                        <button type="button" class="btn btn-default" id="signup_btn">Submit </button>
+                                        <button type="button" class="btn btn-default" data-dismiss="signup-form">Close</button>
+                                </div>
+            </div></form></div>
+                                   
+     
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase-database.js"></script>
+    <script src="E:/project/major-project/MajorCare/Creative-Tim Template/user_signup.js"></script>
+</html>
