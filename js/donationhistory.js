@@ -32,7 +32,7 @@
            currentuser = userref.child(auth.currentUser.uid);
            currentuser.once('value',function(snapshot){
                 snapshot.forEach(function(childSnapshot){
-                    row.push(new Array(i,"28/3/17",childSnapshot.val().donationAmount,childSnapshot.val().organisationName,childSnapshot.val().donationStatus))
+                    row.push(new Array(i+1,"28/3/17",childSnapshot.val().donationAmount,childSnapshot.val().organisationName,childSnapshot.val().donationStatus))
                     var tr = document.createElement('tr')
                     var j=0
                     while(j<row[i].length){

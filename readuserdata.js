@@ -19,13 +19,7 @@
   userref = database.ref('Users');
   currentuser = userref.child(auth.currentUser.uid);
   console.log(auth.currentUser.uid);
-  /*currentuser.once('value').then(function(snapshot){
-      fname.value = snapshot.val().firstName;
-     var json = JSON.parse(fname.value)
-     console.log(json)
-  });
-  
-}())*/
+
 
 firebase.database().ref('/Users/' + auth.currentUser.uid).once('value').then(function(snapshot) {
   var username = snapshot.val().firstName;
