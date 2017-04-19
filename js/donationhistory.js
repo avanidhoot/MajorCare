@@ -29,20 +29,34 @@
         else{
            var database = firebase.database();
            userref = database.ref('Donations');
+           organisationref = database.ref('Organisations');
+           currentuser = organisationref.child(auth.currentUser.uid);
+           currentuser.on('value',function(snapshot){
+                 name = snapshot.val().organisationName;
+
+           });
+
            currentuser = userref.child(auth.currentUser.uid);
-           currentuser.once('value',function(snapshot){
+           userref.once('value',function(snapshot){
                 snapshot.forEach(function(childSnapshot){
-                    row.push(new Array(i+1,"28/3/17",childSnapshot.val().donationAmount,childSnapshot.val().organisationName,childSnapshot.val().donationStatus))
-                    var tr = document.createElement('tr')
-                    var j=0
-                    while(j<row[i].length){
-                      var td = document.createElement('td')
-                      td.appendChild(document.createTextNode(row[i][j]))
-                      tr.appendChild(td)
-                      j=j+1
+                  childSnapshot.forEach(function(subchildSnapshot){
+    
+                    if(subchildSnapshot.val().organisationName == name){
+
+                      row.push(new Array(i+1,"28/3/17",subchildSnapshot.val().donationAmount,subchildSnapshot.val().uname+"\n"+subchildSnapshot.val().umail,subchildSnapshot.val().donationStatus))
+                      var tr = document.createElement('tr')
+                      var j=0
+                      while(j<row[i].length){
+                        var td = document.createElement('td')
+                        td.appendChild(document.createTextNode(row[i][j]))
+                        tr.appendChild(td)
+                        j=j+1
+                      }
+                      i=i+1
+                      tbody.appendChild(tr)
                     }
-                    i=i+1
-                    tbody.appendChild(tr)
+                  });
+
                 });
           });
           }

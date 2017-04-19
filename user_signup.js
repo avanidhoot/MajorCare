@@ -13,19 +13,19 @@
 
   const email = document.getElementById('email')
   const password = document.getElementById('pwd')
-   const fname = document.getElementById('fname')
+  const fname = document.getElementById('fname')
   const lname = document.getElementById('lname')
   const auth = firebase.auth()
   const signup_btn = document.getElementById('signup_btn')
   var database = firebase.database()
   userref = database.ref('Users')
-  
+
   signup_btn.addEventListener('click',e=>{
      const promise = auth. createUserWithEmailAndPassword(email.value,password.value);
      promise.catch(e=>alert(e.message));
   });
-  
-  auth.onAuthStateChanged(firebaseUser=>{ 
+
+  auth.onAuthStateChanged(firebaseUser=>{
         if(firebaseUser)                                                                  //Login state
         {
             currentuser = userref.child(auth.currentUser.uid)
@@ -44,8 +44,8 @@
         },function(error){
             alert(error.message);
         });
-        
+
         }
     });
-  
+
 }())

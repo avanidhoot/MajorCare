@@ -15,7 +15,7 @@
   const logout_btn = document.getElementById('logout_btn');
   const name = document.getElementById('name')
   const email = document.getElementById('email')
-  const phoneNumber = document.getElementById('phoneNumber')
+  const location = document.getElementById('location')
   const update_btn = document.getElementById('update_btn')
   var	 userName = document.getElementById('usernameInPoster')
   var fullname = document.getElementById('nameInPoster')
@@ -28,11 +28,11 @@
 
   update_btn.addEventListener('click',e=>{
     	var database = firebase.database();
-        userref = database.ref('Users');
+        userref = database.ref('Organisations');
         currentuser = userref.child(auth.currentUser.uid);
-	currentuser.child("firstName").set(name.value);
-	currentuser.child("email").set(email.value);
-	currentuser.child("password").set(password.value);
+	currentuser.child("organisationName").set(name.value);
+	currentuser.child("organisationLocation").set(password.value);
+  currentuser.child("organisationUsername").set(password.value);
 	currentuser.child("phoneNumber").set(phoneNumber.value);
   });
 
@@ -43,16 +43,16 @@
         }
       else{
            var database = firebase.database();
-           userref = database.ref('Users');
+           userref = database.ref('Organisations');
            currentuser = userref.child(auth.currentUser.uid);
 
            currentuser.on('value',function(snapshot){
-                 name.value = snapshot.val().firstName;
-	               email.value = snapshot.val().email;
-		             phoneNumber.value = snapshot.val().phoneNumber;
-		             password.value = snapshot.val().password;
-		             fullname.innerHTML = name.value;
-   		           userName.innerHTML = email.value;
+                 name.value = snapshot.val().organisationName;
+	               email.value = auth.currentuser.email;
+		             location.value = snapshot.val().organisationLocation;
+		             password.value = "********";
+		             fullname.innerHTML = snapshot.val().organisationName;
+   		           userName.innerHTML = auth.currentuser.email;
            });
         }
   });
