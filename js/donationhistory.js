@@ -40,7 +40,7 @@
            userref.once('value',function(snapshot){
                 snapshot.forEach(function(childSnapshot){
                   childSnapshot.forEach(function(subchildSnapshot){
-    
+
                     if(subchildSnapshot.val().organisationName == name){
 
                       row.push(new Array(i+1,"28/3/17",subchildSnapshot.val().donationAmount,subchildSnapshot.val().uname+"\n"+subchildSnapshot.val().umail,subchildSnapshot.val().donationStatus))
@@ -49,6 +49,24 @@
                       while(j<row[i].length){
                         var td = document.createElement('td')
                         td.appendChild(document.createTextNode(row[i][j]))
+                        if(td.innerText == "Confirmed")
+                          td.style.color = "#2ababb"
+                        if(td.innerText == "Pending"){
+                          td.style.color = "#FBB03C"
+                          td.style.cursor = "pointer"
+                          td.id = "statusPending"+subchildSnapshot.key;
+
+                          td.addEventListener('click',function(){
+                            td.style.color = "#2ababb"
+                            td.innerText = "Confirmed"
+                            console.log(snapshot.key)
+                            console.log(childSnapshot.key)
+                            console.log(subchildSnapshot.key)
+                            userref.child(childSnapshot.key).child(subchildSnapshot.key).child("donationStatus").set("Confirmed")
+                          })
+
+                        }
+
                         tr.appendChild(td)
                         j=j+1
                       }

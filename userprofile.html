@@ -31,6 +31,45 @@
     <link href="css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 <body>
+	<!-- Modal Change Password -->
+	<div class="modal fade modal-ext" id="modal-changepassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+					<!--Content-->
+					<div class="modal-content">
+							<!--Header-->
+							<div class="modal-header flex-column">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+									</button>
+									<h3 class="w-100"><i class="fa fa-user"></i> Change Password: </h3>
+
+							</div>
+							<!--Body-->
+							<div class="modal-body">
+									<div class="md-form">
+									 	  <label for="con_pass">Current Password</label>
+									    <input type="password" id="current_pass" class="form-control" required>
+									</div>
+									<div class="md-form">
+											<label for="pass">New password</label>
+											<input type="password" id="pass" class="form-control" required>
+
+									</div>
+									 <div class="md-form">
+											<label for="con_pass">Retype password</label>
+											<input type="password" id="con_pass" class="form-control" required>
+									</div>
+
+
+									<div class="text-center">
+											<button class="btn btn-primary btn-lg" id="change_pass_btn">Confirm</button>
+									</div>
+							</div>
+
+					</div>
+
+			</div>
+	</div>
 
 <div class="wrapper">
     <div class="sidebar" data-color="orange" data-image="assets/img/run2.jpg">
@@ -91,7 +130,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#">Profile</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -128,7 +167,6 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Organisation Name</label>
-
                                                 <input type="text" id="name" class="form-control" placeholder="First Name">
 
                                             </div>
@@ -156,43 +194,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label for="Password">Password</label>
-																								<a href="#ChangePwd" id="chng-pwd" data-toggle="modal">Change Password ?</a>
-                                                <input type="password" id="password" class="form-control" placeholder="Password" disabled >
-																								<div id="ChangePwd" class="modal" role="dialog">
-																									<div class="modal-dialog">
-																										<div class="modal-content">
-																											<div class="modal-header">
-																												<button type="button" data-dismiss="modal">&times;</button>
-																											</div>
-																											<div class="modal-body">
-																												<div class="container">
-																																<div class="form-group">
-																																		<label>Original Password:</label>
-																																		<input type="password" class="form-control" name="oPwd"/>
-																																</div>
-																																<div class="form-group">
-																																		<label>New Password:</label>
-																																		<input type="password" class="form-control" name="nPwd"/>
-																																</div>
-																																<div class="form-group">
-																																		<label>Retype Password:</label>
-																																		<input type="password" class="form-control" name="rPwd"/>
-																																</div>
-																																<div class="form-group">
-																																		<button class="btn btn-default" type="submit">Submit</button>
-																																</div>
-																														</div>
-																											</div>
-																										</div>
-																									</div>
-																								</div>
-                                            </div>
-                                        </div>
-                                    </div>
+																		<div class="row">
+																				<div class="col-md-8">
+																						<div class="form-group">
+																							 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-changepassword">Change Password</button>
+
+												 </div>
+																				</div>
+																		</div>
+
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
@@ -218,21 +228,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+										<div class="col-md-4">
                         <div class="card card-user">
-                            <div class="image">
-
-                                <img src="E:\project\major-project\MajorCare\images\run.jpeg" alt="..."/>
-
-                                <img src="images\run2.jpeg" alt="..."/>
-
-                            </div>
+                            <div class="image"></div>
                             <div class="content">
                                 <div class="author">
-                                     <a href="#">
-                                    <img class="avatar border-gray" src="images\avani1.jpg" alt="..."/>
-
-                                      <h4 class="title" id="nameInPoster"/>
+                                    <a href="#">
+                                    <label class="avatar border-gray" src="" id="profilepic">
+																			<img class="avatar border-gray" src="images/aastha.jpg" id="profilepicimage" alt="..."/>
+																			<input type="file" style="display:none;"  id="profilepicinput"/>
+																		</label>
+                                    <h4 class="title" id="nameInPoster"/>
                                    	<br/>
                                       <h5><small id="usernameInPoster" style="text-transform:lowercase"></small></h5>
 

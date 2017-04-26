@@ -10,52 +10,80 @@
     messagingSenderId: "81353950576"
   };
   firebase.initializeApp(config);
-    
-  const password = document.getElementById('password')
+
+  const profilepic = document.getElementById('profilepic')
+  const profilepicselector = document.getElementById('profilepicinput')
+  const profilepicimg = document.getElementById('profilepicimage');
+  const change_pass_btn = document.getElementById('change_pass_btn');
+  const currentpass = document.getElementById('current_pass')
+  const newpass = document.getElementById('pass')
+  const conpass = document.getElementById('con_pass')
   const logout_btn = document.getElementById('logout_btn');
-  const fname = document.getElementById('fname')
-  const lname = document.getElementById('lname')
+  const name = document.getElementById('name')
   const email = document.getElementById('email')
-  const phoneNumber = document.getElementById('phoneNumber')
+  const location = document.getElementById('location')
   const update_btn = document.getElementById('update_btn')
-  const	 userName = document.getElementById('usernameInPoster')
+  var	 userName = document.getElementById('usernameInPoster')
   var fullname = document.getElementById('nameInPoster')
   const auth = firebase.auth()
-     
+
   logout_btn.addEventListener('click',e=>{
     const promise = auth.signOut();
     promise.catch(e=>alert(e.message));
   });
 
-  update_btn.addEventListener('click',e=>{
-    	var database = firebase.database();
-        userref = database.ref('Users');
-        currentuser = userref.child(auth.currentUser.uid);
-	currentuser.child("firstName").set(fname.value);
-	currentuser.child("lastName").set(lname.value);
-	currentuser.child("email").set(email.value);
-	currentuser.child("password").set(password.value);
-	currentuser.child("phoneNumber").set(phoneNumber.value);
+change_pass_btn.addEventListener('click',e=>{
+  var user = firebase.auth().currentUser;
+
+  user.updatePassword(newpass.value).then(function() {
+      window.location.reload
+  }, function(error) {
+    // An error happened.
+  });
+});
+  profilepicselector.addEventListener('change', e=>{
+    console.log("this is the most stupid thing i have ever seen");
+    profilepicimg.src = profilepicselector.value;
   });
 
-  auth.onAuthStateChanged(firebaseUser=>{ 
-        if(firebaseUser==null) 
+  update_btn.addEventListener('click',e=>{
+    	var database = firebase.database();
+        console.log(auth.currentUser.uid);
+        userref = database.ref('Organisations');
+        currentuser = userref.child(auth.currentUser.uid);
+	currentuser.child("organisationName").set(name.value);
+	currentuser.child("organisationLocation").set(password.value);
+  currentuser.child("organisationUsername").set(password.value);
+
+  });
+
+  // if (fullPath) {
+  //     var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+  //     var filename = fullPath.substring(startIndex);
+  //     profilepic.src = filename;
+  //     if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+  //         filename = filename.substring(1);
+  //     }
+  //     alert(filename);
+  // }
+  auth.onAuthStateChanged(firebaseUser=>{
+        if(firebaseUser==null)
         {
-           window.location.href="E:/project/major-project/MajorCare/index.html";   
+           window.location.href="index.html";
         }
       else{
            var database = firebase.database();
-           userref = database.ref('Users');
+           userref = database.ref('Organisations');
            currentuser = userref.child(auth.currentUser.uid);
-           
+
            currentuser.on('value',function(snapshot){
-                fname.value = snapshot.val().firstName;
-	        lname.value = snapshot.val().lastName;
-                email.value = snapshot.val().email;
-		phoneNumber.value = snapshot.val().phoneNumber;
-		password.value = snapshot.val().password;
-		fullname.innerHTML = fname.value+" "+lname.value;
-   		userName.innerHTML = email.value;
+                 name.value = snapshot.val().organisationName;
+	               email.value = auth.currentUser.email;
+		             location.value = snapshot.val().organisationLocation;
+
+		             fullname.innerHTML = snapshot.val().organisationName;
+   		           userName.innerHTML = auth.currentUser.email;
+                 profilepic.innerHTML ='<img class="avatar border-gray" src="'+firebase.auth().currentUser.photoURL+'"/>';
            });
         }
   });

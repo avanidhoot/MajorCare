@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>Events</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -29,6 +29,11 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <style>
+    body.modal-open div.modal-backdrop {
+    z-index: 0;
+}
+    </style>
 </head>
 <body>
 
@@ -90,7 +95,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#">Events/a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -140,6 +145,64 @@
                             </div>
                         </div>
                     </div>
+<div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-events" style="color:orange; margin-left:450px">
+Add New Event +
+</button>
+
+<!-- Modal Subscription -->
+<div class="modal fade modal-ext" id="modal-events" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel" style="color:orange">Add Event Details</h4>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+
+                <div class="lg-form">
+                    <label for="form22">Event Name</label>
+                    <input type="text" id="ename" class="form-control" required>
+
+                </div>
+
+                <div class="md-form">
+                   <label for="form32">Event Date</label>
+                    <input type="date" id="edate" class="form-control" required>
+
+                </div>
+                <div class="md-form">
+                   <label for="form32">Event Location</label>
+                    <input type="text" id="elocation" class="form-control" required>
+
+                </div>
+                <div class="lg-form">
+                    <label for="form32">Crowd Gathered</label>
+                    <input type="number" min="0" id="enumber" class="form-control" required>
+
+                </div>
+                <div class="lg-form">
+                   <label for="form32">Upload Photos</label>
+                    <input type="file"  id="ephotos" class="form-control" required>
+
+                </div>
+                <br>
+                <div class="text-center">
+                    <button id="create_event_btn" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+                    </div>
+
+    </div>
+</div>
 
 
 
